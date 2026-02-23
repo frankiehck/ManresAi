@@ -1,0 +1,39 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong!Passw0rd
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql
+
+  backend:
+    build:
+      context: .
+      dockerfile: src/backend/Manres.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Manres=Server=sqlserver,1433;Database=Manres;User ID=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;
+      - Schema__ApplyOnStartup=true
+      - Schema__ScriptPath=/sql/Manres.Schema.sql
+    depends_on:
+      - sqlserver
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: src/frontend/manres-ui/Dockerfile
+    environment:
+      - VITE_API_BASE_URL=http://localhost:5000/api/crud
+      - VITE_API_ROOT=http://localhost:5000/api
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  mssql-data:
