@@ -1,0 +1,613 @@
+-- Auto-generated from Visual FoxPro DBF headers.
+-- Review PK/FK constraints and indexes before production use.
+SET ANSI_NULLS ON;
+SET QUOTED_IDENTIFIER ON;
+GO
+
+-- ERRORLOG: source rows at extraction time = 0
+IF OBJECT_ID(N'dbo.ERRORLOG', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[ERRORLOG] (
+        [ER_DATTIME] DATETIME2(0) NULL,
+        [ER_USER] NVARCHAR(5) NULL,
+        [ER_REBOOT] BIT NULL,
+        [ER_ERROR] NVARCHAR(5) NULL,
+        [ER_METHPRG] NVARCHAR(120) NULL,
+        [ER_LINENO] NVARCHAR(5) NULL,
+        [ER_MESSAGE] NVARCHAR(MAX) NULL,
+        [ER_CODE] NVARCHAR(MAX) NULL,
+        [ER_AERROR] NVARCHAR(MAX) NULL,
+        [ER_PROGRAM] NVARCHAR(MAX) NULL,
+        [ER_LSTMEMO] NVARCHAR(MAX) NULL,
+        [ER_LSTSTAT] NVARCHAR(MAX) NULL,
+        [ER_CONFIG] NVARCHAR(MAX) NULL,
+        [ER_ENVIRON] NVARCHAR(MAX) NULL,
+        [ER_FORMS] NVARCHAR(MAX) NULL,
+        [ER_USINFO] NVARCHAR(MAX) NULL
+    );
+END
+GO
+
+-- MRGENPK: source rows at extraction time = 18
+IF OBJECT_ID(N'dbo.MRGENPK', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRGENPK] (
+        [GPK_PK] NVARCHAR(40) NULL,
+        [GPK_CURREN] INT NULL,
+        [GPK_CURRE2] NVARCHAR(5) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRGENPK') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRGENPK] ADD CONSTRAINT PK_MRGENPK PRIMARY KEY CLUSTERED ([GPK_PK]);
+END
+GO
+
+-- MRLOG: source rows at extraction time = 296798
+IF OBJECT_ID(N'dbo.MRLOG', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRLOG] (
+        [LOG_PK] NVARCHAR(6) NULL,
+        [ACCTID] NVARCHAR(6) NULL,
+        [LDATE] DATE NULL,
+        [REPID] NVARCHAR(3) NULL,
+        [LM] BIT NULL,
+        [NA] BIT NULL,
+        [CB] BIT NULL,
+        [WSB] BIT NULL,
+        [NOTE] NVARCHAR(MAX) NULL,
+        [LTIME] NVARCHAR(8) NULL,
+        [USER_FK] NVARCHAR(5) NULL,
+        [CB_DATE] DATE NULL,
+        [CB_TIME] NVARCHAR(8) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRLOG') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRLOG] ADD CONSTRAINT PK_MRLOG PRIMARY KEY CLUSTERED ([LOG_PK]);
+END
+GO
+
+-- MRLOOKTP: source rows at extraction time = 11
+IF OBJECT_ID(N'dbo.MRLOOKTP', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRLOOKTP] (
+        [LTP_PK] NVARCHAR(5) NULL,
+        [LTP_DESCRI] NVARCHAR(40) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRLOOKTP') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRLOOKTP] ADD CONSTRAINT PK_MRLOOKTP PRIMARY KEY CLUSTERED ([LTP_PK]);
+END
+GO
+
+-- MSGSVC: source rows at extraction time = 122
+IF OBJECT_ID(N'dbo.MSGSVC', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MSGSVC] (
+        [CKEY] NVARCHAR(60) NULL,
+        [CFUNCTION] NVARCHAR(60) NULL,
+        [CORIGINAL] NVARCHAR(MAX) NULL,
+        [CSPANISH] NVARCHAR(MAX) NULL,
+        [CFRENCH] NVARCHAR(MAX) NULL,
+        [CGERMAN] NVARCHAR(MAX) NULL,
+        [CDANISH] NVARCHAR(MAX) NULL,
+        [CERRNO] NVARCHAR(5) NULL,
+        [CALIGNMENT] NVARCHAR(1) NULL,
+        [CBELL] NVARCHAR(5) NULL,
+        [CROW] NVARCHAR(3) NULL,
+        [CCOL] NVARCHAR(3) NULL,
+        [CVISUAL] NVARCHAR(30) NULL,
+        [CGUIVISUAL] NVARCHAR(60) NULL,
+        [COBJECT] NVARCHAR(2) NULL,
+        [CTIMEOUT] NVARCHAR(5) NULL,
+        [CTITLE] NVARCHAR(50) NULL,
+        [CRETTYPE] NVARCHAR(1) NULL,
+        [CWINFONT] NVARCHAR(25) NULL,
+        [CMACFONT] NVARCHAR(25) NULL,
+        [CWHERE] NVARCHAR(MAX) NULL
+    );
+END
+GO
+
+-- MRACCTS: source rows at extraction time = 12818
+IF OBJECT_ID(N'dbo.MRACCTS', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRACCTS] (
+        [ACCTID] NVARCHAR(6) NULL,
+        [ACCTNAME] NVARCHAR(40) NULL,
+        [BADDRESS] NVARCHAR(50) NULL,
+        [BCITY] NVARCHAR(30) NULL,
+        [BSTATE] NVARCHAR(2) NULL,
+        [BZIP] NVARCHAR(10) NULL,
+        [BCOUNTRY] NVARCHAR(25) NULL,
+        [PHONE] NVARCHAR(30) NULL,
+        [FAX] NVARCHAR(17) NULL,
+        [PHONE2] NVARCHAR(30) NULL,
+        [BUYER] NVARCHAR(35) NULL,
+        [BUYER2] NVARCHAR(35) NULL,
+        [ACT_REP] NVARCHAR(3) NULL,
+        [ACT_MAJOR] BIT NULL,
+        [ACT_CREDIT] NVARCHAR(6) NULL,
+        [ACT_TYPE_F] NVARCHAR(6) NULL,
+        [SNAME] NVARCHAR(40) NULL,
+        [SADDRESS] NVARCHAR(50) NULL,
+        [SCITY] NVARCHAR(30) NULL,
+        [SSTATE] NVARCHAR(2) NULL,
+        [SZIP] NVARCHAR(10) NULL,
+        [SCOUNTRY] NVARCHAR(25) NULL,
+        [NOTE] NVARCHAR(MAX) NULL,
+        [EMAIL] NVARCHAR(50) NULL,
+        [ACT_CURREN] BIT NULL,
+        [ACT_GROUP] NVARCHAR(4) NULL,
+        [ACT_TYPE3_] NVARCHAR(6) NULL,
+        [BADDRESS2] NVARCHAR(50) NULL,
+        [SADDRESS2] NVARCHAR(50) NULL,
+        [CREATE_DT] DATETIME2(0) NULL,
+        [CREATE_BY] NVARCHAR(5) NULL,
+        [UPDATE_DT] DATETIME2(0) NULL,
+        [UPDATE_BY] NVARCHAR(5) NULL,
+        [LOCATIONS] SMALLINT NULL,
+        [DUNS] NVARCHAR(15) NULL,
+        [WEB] NVARCHAR(50) NULL,
+        [CELL] NVARCHAR(30) NULL,
+        [ACT_TYPE4_] NVARCHAR(6) NULL,
+        [ACT_TYPE5_] NVARCHAR(6) NULL
+    );
+END
+GO
+
+-- MRAP: source rows at extraction time = 0
+IF OBJECT_ID(N'dbo.MRAP', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRAP] (
+        [AP_PK] NVARCHAR(6) NULL,
+        [AP_INV_FK] NVARCHAR(6) NULL,
+        [AP_COM_PD] DECIMAL(9,2) NULL,
+        [AP_COM_PD_] DATE NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRAP') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRAP] ADD CONSTRAINT PK_MRAP PRIMARY KEY CLUSTERED ([AP_PK]);
+END
+GO
+
+-- MRAR: source rows at extraction time = 142018
+IF OBJECT_ID(N'dbo.MRAR', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRAR] (
+        [AR_PK] NVARCHAR(6) NULL,
+        [AR_INV_FK] NVARCHAR(6) NULL,
+        [AR_COM_REC] DECIMAL(9,2) NULL,
+        [AR_COM_RE2] DATE NULL,
+        [AR_COMP2] DECIMAL(9,2) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRAR') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRAR] ADD CONSTRAINT PK_MRAR PRIMARY KEY CLUSTERED ([AR_PK]);
+END
+GO
+
+-- MRCOMM: source rows at extraction time = 406
+IF OBJECT_ID(N'dbo.MRCOMM', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRCOMM] (
+        [COM_PK] NVARCHAR(6) NULL,
+        [COM_MANFK] NVARCHAR(6) NULL,
+        [COM_REPFK] NVARCHAR(3) NULL,
+        [COM_COMM] DECIMAL(8,4) NULL,
+        [COM_TYPE] NVARCHAR(5) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRCOMM') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRCOMM] ADD CONSTRAINT PK_MRCOMM PRIMARY KEY CLUSTERED ([COM_PK]);
+END
+GO
+
+-- MRCONFIG: source rows at extraction time = 50
+IF OBJECT_ID(N'dbo.MRCONFIG', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRCONFIG] (
+        [AP_ITEM] NVARCHAR(40) NULL,
+        [AP_ITEMDTP] NVARCHAR(1) NULL,
+        [AP_ITEMVAL] NVARCHAR(100) NULL,
+        [AP_ITEMDSC] NVARCHAR(254) NULL
+    );
+END
+GO
+
+-- MRIMP_CM: source rows at extraction time = 27
+IF OBJECT_ID(N'dbo.MRIMP_CM', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRIMP_CM] (
+        [I_INVNBR] NVARCHAR(20) NULL,
+        [I_CM] NVARCHAR(20) NULL,
+        [I_INVDT] INT NULL,
+        [I_CUSTOMER] NVARCHAR(50) NULL,
+        [I_PONBR] NVARCHAR(20) NULL,
+        [I_ORDDT] INT NULL,
+        [I_TOT] DECIMAL(10,2) NULL,
+        [I_COMM] DECIMAL(10,2) NULL,
+        [I_INVDATE] DATE NULL,
+        [I_ORDDATE] DATE NULL,
+        [I_XFER] BIT NULL,
+        [I_NOTE] NVARCHAR(100) NULL,
+        [I_MANID] NVARCHAR(6) NULL,
+        [I_XLS_NAME] NVARCHAR(30) NULL,
+        [INV_MAN_PD] BIT NULL,
+        [ACCTID] NVARCHAR(6) NULL,
+        [ACCTNAME] NVARCHAR(50) NULL,
+        [INV_PK] NVARCHAR(6) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRIMP_CM') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRIMP_CM] ADD CONSTRAINT PK_MRIMP_CM PRIMARY KEY CLUSTERED ([INV_PK]);
+END
+GO
+
+-- MRIMP_PO: source rows at extraction time = 0
+IF OBJECT_ID(N'dbo.MRIMP_PO', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRIMP_PO] (
+        [I_CUSTOMER] NVARCHAR(50) NULL,
+        [I_CITY] NVARCHAR(30) NULL,
+        [I_STATE] NVARCHAR(5) NULL,
+        [I_COUNTRY] NVARCHAR(25) NULL,
+        [I_REP] NVARCHAR(3) NULL,
+        [I_DLVDT] INT NULL,
+        [I_TOTPRICE] DECIMAL(10,2) NULL,
+        [I_PONBR] NVARCHAR(15) NULL,
+        [I_SEASON] NVARCHAR(4) NULL,
+        [I_SALES_TY] NVARCHAR(2) NULL,
+        [I_SHOW] NVARCHAR(3) NULL,
+        [I_ORD_TYPE] NVARCHAR(3) NULL,
+        [I_COMM] DECIMAL(10,2) NULL,
+        [I_COMMREP] DECIMAL(10,2) NULL,
+        [I_TERMS] NVARCHAR(10) NULL,
+        [I_FOB] NVARCHAR(15) NULL,
+        [I_SHIP_VIA] NVARCHAR(15) NULL,
+        [I_DLVDATE] DATE NULL,
+        [I_ORDDATE] DATE NULL,
+        [I_XFER] BIT NULL,
+        [I_NOTE] NVARCHAR(100) NULL,
+        [I_MANID] NVARCHAR(6) NULL,
+        [I_XLS_NAME] NVARCHAR(30) NULL,
+        [ACCTID] NVARCHAR(6) NULL,
+        [ACCTNAME] NVARCHAR(40) NULL
+    );
+END
+GO
+
+-- MRIMPORT: source rows at extraction time = 11
+IF OBJECT_ID(N'dbo.MRIMPORT', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRIMPORT] (
+        [I_TYPE] NVARCHAR(5) NULL,
+        [I_INVNBR] NVARCHAR(20) NULL,
+        [I_CM] NVARCHAR(20) NULL,
+        [I_INVDT] INT NULL,
+        [I_CUSTOMER] NVARCHAR(50) NULL,
+        [I_PONBR] NVARCHAR(20) NULL,
+        [I_TOT] DECIMAL(10,2) NULL,
+        [I_INVDATE] DATE NULL,
+        [I_ACT_FK] NVARCHAR(6) NULL,
+        [I_XFER] BIT NULL,
+        [I_NOTE] NVARCHAR(100) NULL,
+        [I_MANID] NVARCHAR(6) NULL,
+        [I_XLS_NAME] NVARCHAR(30) NULL,
+        [ORD_PK] NVARCHAR(6) NULL,
+        [ACCTID] NVARCHAR(6) NULL,
+        [TOTPRICE] DECIMAL(10,2) NULL,
+        [ACCTNAME] NVARCHAR(50) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRIMPORT') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRIMPORT] ADD CONSTRAINT PK_MRIMPORT PRIMARY KEY CLUSTERED ([ORD_PK]);
+END
+GO
+
+-- MRINVPD: source rows at extraction time = 141994
+IF OBJECT_ID(N'dbo.MRINVPD', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRINVPD] (
+        [IP_PK] NVARCHAR(6) NULL,
+        [IP_INV_FK] NVARCHAR(6) NULL,
+        [IP_MAN_PD_] DECIMAL(10,2) NULL,
+        [IP_MAN_PD2] DATE NULL,
+        [_NullFlags] NVARCHAR(MAX) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRINVPD') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRINVPD] ADD CONSTRAINT PK_MRINVPD PRIMARY KEY CLUSTERED ([IP_PK]);
+END
+GO
+
+-- MRMAN: source rows at extraction time = 169
+IF OBJECT_ID(N'dbo.MRMAN', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRMAN] (
+        [MANID] NVARCHAR(6) NULL,
+        [MANNAME] NVARCHAR(40) NULL,
+        [ADDRESS] NVARCHAR(50) NULL,
+        [CITY] NVARCHAR(30) NULL,
+        [STATE] NVARCHAR(2) NULL,
+        [ZIP] NVARCHAR(10) NULL,
+        [CONTACT] NVARCHAR(40) NULL,
+        [PHONE] NVARCHAR(17) NULL,
+        [PHONE2] NVARCHAR(17) NULL,
+        [FAX] NVARCHAR(17) NULL,
+        [NOTE] NVARCHAR(MAX) NULL,
+        [MAN_CURREN] BIT NULL,
+        [DELMAN] BIT NULL,
+        [MAN_COMM] DECIMAL(8,4) NULL,
+        [MAN_REP] NVARCHAR(3) NULL,
+        [ADDRESS2] NVARCHAR(50) NULL,
+        [MAN_GROUP] NVARCHAR(4) NULL,
+        [COUNTRY] NVARCHAR(30) NULL,
+        [MAN_COMM2] DECIMAL(8,4) NULL,
+        [DUNS] NVARCHAR(15) NULL,
+        [EMAIL] NVARCHAR(50) NULL,
+        [CBDAYS] SMALLINT NULL
+    );
+END
+GO
+
+-- MRNOTES: source rows at extraction time = 0
+IF OBJECT_ID(N'dbo.MRNOTES', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRNOTES] (
+        [NTS_PK] NVARCHAR(6) NULL,
+        [NTS_ACCTID] NVARCHAR(6) NULL,
+        [NTS_MANID] NVARCHAR(6) NULL,
+        [NTS_DATE] DATE NULL,
+        [NTS_NOTES] NVARCHAR(MAX) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRNOTES') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRNOTES] ADD CONSTRAINT PK_MRNOTES PRIMARY KEY CLUSTERED ([NTS_PK]);
+END
+GO
+
+-- MRORDER: source rows at extraction time = 128383
+IF OBJECT_ID(N'dbo.MRORDER', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRORDER] (
+        [ORD_PK] NVARCHAR(6) NULL,
+        [MANID] NVARCHAR(6) NULL,
+        [ACCTID] NVARCHAR(6) NULL,
+        [PONBR] NVARCHAR(15) NULL,
+        [DLVDATE] DATE NULL,
+        [ORDDATE] DATE NULL,
+        [STARTDATE] DATE NULL,
+        [TOTPRICE] DECIMAL(10,2) NULL,
+        [ORD_UNITS] INT NULL,
+        [REPID] NVARCHAR(3) NULL,
+        [SHIPID] SMALLINT NULL,
+        [OBUYER] NVARCHAR(20) NULL,
+        [ORD_SHOW] NVARCHAR(3) NULL,
+        [ORD_LOCATI] NVARCHAR(2) NULL,
+        [ORD_SALES_] NVARCHAR(2) NULL,
+        [ORD_FOB] NVARCHAR(15) NULL,
+        [ORD_TERMS] NVARCHAR(10) NULL,
+        [ORD_SHIP_V] NVARCHAR(15) NULL,
+        [ORD_NOTES] NVARCHAR(MAX) NULL,
+        [ORD_COMM] DECIMAL(8,4) NULL,
+        [ORD_SEASON] NVARCHAR(4) NULL,
+        [ORD_COMMRE] DECIMAL(8,4) NULL,
+        [ORD_CANCEL] BIT NULL,
+        [ORD_DISCOU] DECIMAL(8,4) NULL,
+        [ORD_MAN_PO] NVARCHAR(15) NULL,
+        [ORD_CLOSED] BIT NULL,
+        [ORD_CONFIR] BIT NULL,
+        [ORD_COMM2] DECIMAL(8,4) NULL,
+        [ORD_CREATE] DATETIME2(0) NULL,
+        [ORD_CREAT2] NVARCHAR(5) NULL,
+        [ORD_UPDATE] DATETIME2(0) NULL,
+        [ORD_UPDAT2] NVARCHAR(5) NULL,
+        [ORD_TYPE1_] NVARCHAR(6) NULL,
+        [ORD_CBDAYS] SMALLINT NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRORDER') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRORDER] ADD CONSTRAINT PK_MRORDER PRIMARY KEY CLUSTERED ([ORD_PK]);
+END
+GO
+
+-- MRPROJ: source rows at extraction time = 0
+IF OBJECT_ID(N'dbo.MRPROJ', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRPROJ] (
+        [PJ_PK] NVARCHAR(5) NULL,
+        [PJ_MAN_FK] NVARCHAR(6) NULL,
+        [PJ_MAJOR] BIT NULL,
+        [PJ_YEAR] SMALLINT NULL,
+        [PJ_PROJ] SMALLINT NULL,
+        [PJ_AMT] DECIMAL(10,2) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRPROJ') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRPROJ] ADD CONSTRAINT PK_MRPROJ PRIMARY KEY CLUSTERED ([PJ_PK]);
+END
+GO
+
+-- MRREPS: source rows at extraction time = 140
+IF OBJECT_ID(N'dbo.MRREPS', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRREPS] (
+        [REP_ID] NVARCHAR(3) NULL,
+        [REP_NAME] NVARCHAR(20) NULL,
+        [REP_TERR] NVARCHAR(30) NULL,
+        [NOTE] NVARCHAR(MAX) NULL
+    );
+END
+GO
+
+-- MRREPUSR: source rows at extraction time = 0
+IF OBJECT_ID(N'dbo.MRREPUSR', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRREPUSR] (
+        [RU_PK] NVARCHAR(5) NULL,
+        [RU_USR_FK] NVARCHAR(5) NULL,
+        [RU_REP_FK] NVARCHAR(3) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRREPUSR') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRREPUSR] ADD CONSTRAINT PK_MRREPUSR PRIMARY KEY CLUSTERED ([RU_PK]);
+END
+GO
+
+-- MRSYSTEM: source rows at extraction time = 44
+IF OBJECT_ID(N'dbo.MRSYSTEM', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRSYSTEM] (
+        [APP_ITEM] NVARCHAR(40) NULL,
+        [APP_ITEMDA] NVARCHAR(1) NULL,
+        [APP_ITEMVA] NVARCHAR(100) NULL,
+        [APP_ITEMDE] NVARCHAR(254) NULL
+    );
+END
+GO
+
+-- MRUSRPRF: source rows at extraction time = 4198
+IF OBJECT_ID(N'dbo.MRUSRPRF', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRUSRPRF] (
+        [PRF_USRFK] NVARCHAR(5) NULL,
+        [PRF_ITEM] NVARCHAR(115) NULL,
+        [PRF_ITEMDA] NVARCHAR(1) NULL,
+        [PRF_ITEMVA] NVARCHAR(100) NULL,
+        [PRF_ITEMDE] NVARCHAR(254) NULL,
+        [_NullFlags] NVARCHAR(MAX) NULL
+    );
+END
+GO
+
+-- MRACTMAN: source rows at extraction time = 148
+IF OBJECT_ID(N'dbo.MRACTMAN', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRACTMAN] (
+        [AM_PK] NVARCHAR(6) NULL,
+        [AM_ACT_FK] NVARCHAR(6) NULL,
+        [AM_MAN_FK] NVARCHAR(6) NULL,
+        [AM_CURRENT] BIT NULL,
+        [AM_POTENTI] BIT NULL,
+        [_NullFlags] NVARCHAR(MAX) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRACTMAN') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRACTMAN] ADD CONSTRAINT PK_MRACTMAN PRIMARY KEY CLUSTERED ([AM_PK]);
+END
+GO
+
+-- MRINV: source rows at extraction time = 143488
+IF OBJECT_ID(N'dbo.MRINV', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRINV] (
+        [INV_PK] NVARCHAR(6) NULL,
+        [MANID] NVARCHAR(6) NULL,
+        [INV_ACT_FK] NVARCHAR(6) NULL,
+        [INV_ORD_FK] NVARCHAR(6) NULL,
+        [PONBR] NVARCHAR(15) NULL,
+        [INVNBR] NVARCHAR(15) NULL,
+        [SHPDATE] DATE NULL,
+        [SHPAMT] DECIMAL(10,2) NULL,
+        [INV_COMM] DECIMAL(8,4) NULL,
+        [INV_UNITS] INT NULL,
+        [INV_MAN_PD] BIT NULL,
+        [INV_MAN_P2] DATE NULL,
+        [INV_COMM2] DECIMAL(8,4) NULL,
+        [INV_SHIPPI] DECIMAL(6,2) NULL,
+        [NOTE] NVARCHAR(MAX) NULL,
+        [INV_CREATE] DATETIME2(0) NULL,
+        [INV_CREAT2] NVARCHAR(5) NULL,
+        [INV_UPDATE] DATETIME2(0) NULL,
+        [INV_UPDAT2] NVARCHAR(5) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRINV') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRINV] ADD CONSTRAINT PK_MRINV PRIMARY KEY CLUSTERED ([INV_PK]);
+END
+GO
+
+-- MRLOOKUP: source rows at extraction time = 57
+IF OBJECT_ID(N'dbo.MRLOOKUP', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRLOOKUP] (
+        [LUP_PK] NVARCHAR(5) NULL,
+        [LUP_LTPFK] NVARCHAR(5) NULL,
+        [LUP_CODE] NVARCHAR(6) NULL,
+        [LUP_DESCRI] NVARCHAR(80) NULL,
+        [LUP_NOTES] NVARCHAR(MAX) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRLOOKUP') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRLOOKUP] ADD CONSTRAINT PK_MRLOOKUP PRIMARY KEY CLUSTERED ([LUP_PK]);
+END
+GO
+
+-- MRPROSP: source rows at extraction time = 2
+IF OBJECT_ID(N'dbo.MRPROSP', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRPROSP] (
+        [PACCTID] NVARCHAR(6) NULL,
+        [ACCTNAME] NVARCHAR(40) NULL,
+        [BADDRESS] NVARCHAR(50) NULL,
+        [BCITY] NVARCHAR(30) NULL,
+        [BSTATE] NVARCHAR(2) NULL,
+        [BZIP] NVARCHAR(10) NULL,
+        [BCOUNTRY] NVARCHAR(25) NULL,
+        [PHONE] NVARCHAR(30) NULL,
+        [FAX] NVARCHAR(17) NULL,
+        [PHONE2] NVARCHAR(30) NULL,
+        [BUYER] NVARCHAR(35) NULL,
+        [BUYER2] NVARCHAR(35) NULL,
+        [ACT_REP] NVARCHAR(3) NULL,
+        [ACT_MAJOR] BIT NULL,
+        [ACT_CREDIT] NVARCHAR(6) NULL,
+        [ACT_TYPE_F] NVARCHAR(6) NULL,
+        [SNAME] NVARCHAR(40) NULL,
+        [SADDRESS] NVARCHAR(50) NULL,
+        [SCITY] NVARCHAR(30) NULL,
+        [SSTATE] NVARCHAR(2) NULL,
+        [SZIP] NVARCHAR(10) NULL,
+        [SCOUNTRY] NVARCHAR(25) NULL,
+        [NOTE] NVARCHAR(MAX) NULL,
+        [EMAIL] NVARCHAR(50) NULL,
+        [ACT_GROUP] NVARCHAR(4) NULL,
+        [ACT_TYPE3_] NVARCHAR(6) NULL,
+        [POT_TYPE_F] NVARCHAR(6) NULL,
+        [BADDRESS2] NVARCHAR(50) NULL,
+        [SADDRESS2] NVARCHAR(50) NULL,
+        [CREATE_DT] DATETIME2(0) NULL,
+        [CREATE_BY] NVARCHAR(5) NULL,
+        [UPDATE_DT] DATETIME2(0) NULL,
+        [UPDATE_BY] NVARCHAR(5) NULL,
+        [LOCATIONS] SMALLINT NULL,
+        [WEB] NVARCHAR(50) NULL,
+        [CELL] NVARCHAR(30) NULL,
+        [ACT_TYPE4_] NVARCHAR(6) NULL,
+        [ACT_TYPE5_] NVARCHAR(6) NULL
+    );
+END
+GO
+
+-- MRREPCAT: source rows at extraction time = 96
+IF OBJECT_ID(N'dbo.MRREPCAT', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRREPCAT] (
+        [REP_PK] NVARCHAR(5) NULL,
+        [REP_NAME] NVARCHAR(60) NULL,
+        [REP_DESCRI] NVARCHAR(MAX) NULL,
+        [REP_FRX] NVARCHAR(25) NULL,
+        [REP_CLASS] NVARCHAR(40) NULL,
+        [REP_TYPE] NVARCHAR(1) NULL,
+        [REP_FORM] NVARCHAR(15) NULL,
+        [REP_SECURI] NVARCHAR(1) NULL,
+        [REP_HIDE] BIT NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRREPCAT') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRREPCAT] ADD CONSTRAINT PK_MRREPCAT PRIMARY KEY CLUSTERED ([REP_PK]);
+END
+GO
+
+-- MRUSERS: source rows at extraction time = 69
+IF OBJECT_ID(N'dbo.MRUSERS', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.[MRUSERS] (
+        [USR_PK] NVARCHAR(5) NULL,
+        [USR_LANID] NVARCHAR(8) NULL,
+        [USR_PASSWO] NVARCHAR(8) NULL,
+        [USR_RIGHTS] NVARCHAR(1) NULL,
+        [USR_FIRSTN] NVARCHAR(30) NULL,
+        [USR_MIDDLE] NVARCHAR(1) NULL,
+        [USR_LASTNA] NVARCHAR(30) NULL,
+        [USR_PHONE] NVARCHAR(12) NULL,
+        [USR_FAX] NVARCHAR(12) NULL,
+        [USR_NOTES] NVARCHAR(MAX) NULL
+    );
+    IF NOT EXISTS (SELECT 1 FROM sys.key_constraints WHERE parent_object_id = OBJECT_ID(N'dbo.MRUSERS') AND [type] = 'PK')
+        ALTER TABLE dbo.[MRUSERS] ADD CONSTRAINT PK_MRUSERS PRIMARY KEY CLUSTERED ([USR_PK]);
+END
+GO
